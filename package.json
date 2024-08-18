@@ -35,7 +35,7 @@
     "fake-useragent": "latest",
     "axios": "latest",
     "cheerio": "latest",
-    "cloudflare-bypasser": "latest",
+    "cloudflare-bypasser": "^0.0.3",
     "gradient-string": "latest"
   }
 }
