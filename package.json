@@ -34,6 +34,7 @@
     "crypto-random-string": "^3.3.1",
     "socks": "latest",
     "fake-useragent": "latest",
+    "random-useragent": "^0.5.0",
     "axios": "latest",
     "cheerio": "latest",
     "cloudflare-bypasser": "^0.0.3",
