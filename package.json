@@ -31,7 +31,7 @@
     "cloudscraper": "latest",
     "request": "latest",
     "crypto": "latest",
-    "crypto-random-string": "^4.0.0",
+    "crypto-random-string": "^3.3.1",
     "socks": "latest",
     "fake-useragent": "latest",
     "axios": "latest",
