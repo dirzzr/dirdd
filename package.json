@@ -1,7 +1,7 @@
 {
-  "name": "telegram-bot-vps",
+  "name": "dir-ddos",
   "version": "1.0.0",
-  "description": "A Telegram bot for controlling VPS with various attack methods",
+  "description": "dir-ddos",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
