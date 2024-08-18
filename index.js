@@ -1,6 +1,8 @@
 const { exec } = require('child_process');
 const readline = require('readline');
 const axios = require('axios');
+const fs = require('fs');
+const url = require('url');
 
 // Scrape proxy dari sumber yang diberikan
 async function scrapeProxies() {
