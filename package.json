@@ -1,0 +1,41 @@
+{
+  "name": "telegram-bot-vps",
+  "version": "1.0.0",
+  "description": "A Telegram bot for controlling VPS with various attack methods",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Ridhz Ganz",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "latest",
+    "fs": "latest",
+    "os": "latest",
+    "hpack": "latest",
+    "net": "latest",
+    "http": "latest",
+    "http2": "latest",
+    "tls": "latest",
+    "cluster": "latest",
+    "colors": "latest",
+    "user-agents": "latest",
+    "chalk": "latest",
+    "dgram": "latest",
+    "https": "latest",
+    "pino": "latest",
+    "url": "latest",
+    "node-fetch": "^2.7.0",
+    "dns": "latest",
+    "util": "latest",
+    "cloudscraper": "latest",
+    "request": "latest",
+    "crypto": "latest",
+    "socks": "latest",
+    "fake-useragent": "latest",
+    "axios": "latest",
+    "cheerio": "latest",
+    "cloudflare-bypasser": "latest",
+    "gradient-string": "latest"
+  }
+}
